@@ -14,9 +14,11 @@ export const mutations = {
 		}else if( localToken ){
 			state.token = localToken;
 			this.$router.push('/')
+			this.$axios.defaults.headers.common["Authorization"] = `Bearer ${localToken}`;
 		}else{
 			this.$router.push({ name: 'login' })
 		}
+		this.$axios.defaults.baseURL = 'https://api.quwi.com/v2';
 	},
 }
 export const actions = {
@@ -29,6 +31,7 @@ export const actions = {
 			})
 			.then((res) => {
 				this.$axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.token}`;
+
 				commit('setToken', res.data.token)
 			})
 			.catch(console.log)
