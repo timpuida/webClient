@@ -1,0 +1,164 @@
+.container {
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.login {
+  padding: 24px;
+  width: 350px;
+  background: #eee;
+}
+ input{
+  padding: 6px;
+  margin-bottom: 6px;
+  border: none;
+  outline: 1px solid #d9d9d9;
+} 
+ input:focus{
+  outline: 2px solid #d9d9d9;
+}
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+.btn:hover {
+  cursor: pointer;
+}
+.btn {
+  background: #395378;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  padding: 8px 24px;
+  align-self: flex-start;
+  font-weight: 400;
+  margin-top: 1em;
+}
+.btn-back{
+  background: #cecece;
+  color: #000;
+  font-weight: 600;
+  margin: 0;
+  padding: 8px 12px;
+}
+.edit-poject .btn{
+   padding: 8px 12px;
+}
+.login .title {
+  text-transform: uppercase;
+  align-self: flex-start;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.home-top {
+  position: fixed;
+  z-index: 50;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 35px;
+  background-color: #fafafa;
+  box-shadow: 0 0 5px rgba(0,0,0,.25);
+  /*border-bottom: 3px solid #bababa;*/
+}
+.link {
+  color: #bababa;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.container {
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f2f0f0
+}
+.editor-top{
+  display: flex;
+  background: #c1c8d2;
+  align-items: center;
+  padding: 6px 35px;
+}
+
+.edit-project{
+  padding: 16px 35px 35px;
+  background: #fff;
+  width: 45%;
+  border-radius: 4px;
+}
+.edit-project form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.edit-project input{
+  margin-bottom: 0;
+  min-width: 190px;
+}
+.edit-project .btn{
+  padding: 8px 12px;
+  margin-top: 0;
+}
+.login .title {
+  text-transform: uppercase;
+  align-self: flex-start;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.status{
+  color: #bababa;
+}
+.status.active{
+  color: green;
+  font-weight: 600;
+}
+.projects{
+  width: 65%;
+  margin-top: 5em;
+}
+.project{
+  cursor: pointer;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.project .name{
+  width: 45%;
+  justify-content: flex-start;
+  align-items: center;
+}
+.pic{
+  width: 50px;
+  height: 50px;
+  margin-right: 16px;
+}
+.pic img{
+  width: 100%;
+}
+.project>*{
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.row{
+  display: flex;
+  justify-content: space-between;
+}
+.row p:last-child{
+  font-weight: 600;
+  margin-left: 8px;
+}
+.title{
+  font-weight: 600;
+}
