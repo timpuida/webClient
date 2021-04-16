@@ -27,7 +27,6 @@
 <script>
 import { mapMutations } from "vuex";
 import { mapState } from "vuex";
-
 import project from "./../components/Project.vue";
 export default {
   components: {
@@ -35,35 +34,35 @@ export default {
   },
   data() {
     return {
-      token: null,
       projects: "",
     };
-  },
-  computed: {
-    ...mapState({
-      url: (state)=>state.url
-    })
   },
   methods: {
     ...mapMutations(["setToken"]),
     getProjects(){
       this.setToken();
-      const token = this.$store.state.token;
        this.$axios
           .get("/projects-manage/index")
           .then(res=>{
             this.projects = res.data.projects
           })
-          .catch(console.log);
+          .catch(err=>{
+            if (err.response.status==401){
+              this.routeToLogin()
+            }
+          });
     },
     logout(){
       this.$axios.
       post('/auth/logout')
       .then(()=>{
-        localStorage.clear();
-        this.$router.push({name:'login'})
+       this.routeToLogin()
       })
       .catch(console.log)
+    },
+    routeToLogin(){
+       localStorage.clear();
+        this.$router.push({name:'login'})
     }
   },
   mounted() {

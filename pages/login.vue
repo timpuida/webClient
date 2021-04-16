@@ -13,7 +13,6 @@
 
 <script>
   import { mapActions } from 'vuex'; 
-
 export default {
   data(){
     return {
@@ -29,12 +28,10 @@ export default {
       ]),
     signIn(){
       this.getToken(this.auth)
-      .then(()=>this.$axios.defaults.baseURL = this.$store.state.url)
     }
   }
 }
 </script>
 
 <style>
-
 </style>

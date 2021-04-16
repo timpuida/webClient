@@ -1,6 +1,7 @@
+import Swal from 'sweetalert2'
 export const state = () => ({
 	token: null,
-	url: 'https://api.quwi.com/v2'
+	// url: 'https://api.quwi.com/v2'
 })
 
 export const mutations = {
@@ -13,28 +14,43 @@ export const mutations = {
 
 		}else if( localToken ){
 			state.token = localToken;
-			this.$router.push('/')
 			this.$axios.defaults.headers.common["Authorization"] = `Bearer ${localToken}`;
 		}else{
 			this.$router.push({ name: 'login' })
 		}
-		this.$axios.defaults.baseURL = 'https://api.quwi.com/v2';
+		this.$axios.defaults.baseURL = process.env.baseUrl;
 	},
 }
 export const actions = {
 	getToken({ commit }, login) {
 		if (!localStorage.getItem('token')){
 
-			this.$axios.post("https://api.quwi.com/v2/auth/login", {
+			this.$axios.post(process.env.baseUrl+"/auth/login", {
 				email: login.email,
 				password: login.password,
 			})
 			.then((res) => {
-				this.$axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.token}`;
 
 				commit('setToken', res.data.token)
 			})
-			.catch(console.log)
+			.catch(err=>{
+				let status = err.response.status;
+				if (status==417){
+					Swal.fire({
+					  title: 'Error!',
+					  text: 'Data validation error',
+					  icon: 'error',
+					  confirmButtonText: 'Cool'
+					})
+				}else{
+					Swal.fire({
+					  title: 'Error!',
+					  text: 'Ops... something went wrong',
+					  icon: 'error',
+					  confirmButtonText: 'Cool'
+					})
+				}
+			})
 		}
 		else{ 
 			commit('setToken')
